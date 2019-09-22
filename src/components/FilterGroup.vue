@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div :key="JSON.stringify(filtersState)">
     <h3>{{ title }}</h3>
 
-    <pre>{{ JSON.stringify(filtersState) }}</pre>
-
-    <div v-for="filter in filterData.slice(0, 10)">
+    <div v-for="filter in filterData.slice(0, 10)" :key="filter.value">
       <filter-item
         :filter="filter"
         :toggle-filter="toggleFilter"
