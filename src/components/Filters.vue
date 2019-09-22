@@ -9,6 +9,7 @@
       :filter-data="filters.languages"
       :is-selected-filter="isSelectedFilter"
       :toggle-filter="toggleFilter"
+      :filters-state="filtersState"
     />
 
     <FilterGroup
@@ -16,6 +17,7 @@
       :filter-data="filters.currencies"
       :is-selected-filter="isSelectedFilter"
       :toggle-filter="toggleFilter"
+      :filters-state="filtersState"
     />
 
     <FilterGroup
@@ -23,12 +25,13 @@
       :filter-data="filters.regions"
       :is-selected-filter="isSelectedFilter"
       :toggle-filter="toggleFilter"
+      :filters-state="filtersState"
     />
   </div>
 </template>
 
 <script>
-import { autorun } from "mobx";
+import { autorun, toJS } from "mobx";
 import FilterGroup from "./FilterGroup";
 
 export default {
@@ -41,23 +44,25 @@ export default {
   },
   data() {
     return {
-      filters: {}
+      filters: {},
+      filtersState: {}
     };
   },
   methods: {
     toggleFilter(filter) {
       return this.store.toggleFilter(filter);
     },
+    isSelectedFilter(filter) {
+      return this.store.isSelectedFilter(filter);
+    },
     resetAllFilters() {
       return this.store.resetAllFilters();
-    },
-    isSelectedFilter(filter) {
-      this.store.isSelectedFilter(filter);
     }
   },
   mounted() {
     autorun(() => {
       this.filters = this.store.countriesStore.filters;
+      this.filtersState = toJS(this.store.filtersState);
     });
   }
 };

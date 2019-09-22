@@ -2,21 +2,26 @@
   <div>
     <h3>{{ title }}</h3>
 
-    <div v-for="filter in filterData.slice(0, 10)" :key="filter.value">
-      <input
-        type="checkbox"
-        :id="filter.value"
-        :checked="isSelectedFilter(filter)"
-        @change="toggleFilter(filter)"
+    <pre>{{ JSON.stringify(filtersState) }}</pre>
+
+    <div v-for="filter in filterData.slice(0, 10)">
+      <filter-item
+        :filter="filter"
+        :toggle-filter="toggleFilter"
+        :is-selected-filter="isSelectedFilter(filter)"
       />
-      <label :for="filter.value">{{ filter.value }} ({{ filter.count }})</label>
     </div>
   </div>
 </template>
 
 <script>
+import FilterItem from "./FilterItem";
+
 export default {
-  name: "FilterGroup",
+  name: "FiltersGroup",
+  components: {
+    FilterItem
+  },
   props: {
     filterData: {
       type: Array,
@@ -24,7 +29,8 @@ export default {
     },
     title: String,
     isSelectedFilter: Function,
-    toggleFilter: Function
+    toggleFilter: Function,
+    filtersState: Object
   }
 };
 </script>
