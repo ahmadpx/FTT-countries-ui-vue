@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Filters :store="store" />
+    <CountriesList :store="store" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CountriesList from "./components/CountriesList";
+import Filters from "./components/Filters";
+import { store } from "./store";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    CountriesList,
+    Filters
+  },
+  data() {
+    return {
+      store
+    };
+  },
+  mounted() {
+    store.countriesStore.fetch();
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
 }
 </style>
