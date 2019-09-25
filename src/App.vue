@@ -4,6 +4,9 @@
       <Filters :store="store" />
       <CountriesList :store="store" />
     </Layout>
+    <FrameworkPadge>
+      <img src="./assets/logo.png" alt />
+    </FrameworkPadge>
   </div>
 </template>
 
@@ -12,13 +15,30 @@ import CountriesList from "./components/CountriesList";
 import Filters from "./components/Filters";
 import { store } from "./store";
 import { Layout } from "./app.styles";
-
+import styled from "vue-styled-components";
+const FrameworkPadge = styled.div`
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  bottom: 30px;
+  left: 30px;
+  img {
+    max-width: 60%;
+  }
+`;
 export default {
   name: "app",
   components: {
     CountriesList,
     Filters,
-    Layout
+    Layout,
+    FrameworkPadge
   },
   data() {
     return {
