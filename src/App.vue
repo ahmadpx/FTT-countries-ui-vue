@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted() {
-    store.countriesStore.fetch();
+    store.countriesList.countriesStore.fetch();
   }
 };
 </script>

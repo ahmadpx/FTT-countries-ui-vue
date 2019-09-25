@@ -1,3 +1,3 @@
-import CountriesListPageStore from "ftt-countries-sdk/lib/stores/countries-list-page.store";
+import Store from "ftt-countries-sdk/lib/stores";
 
-export const store = new CountriesListPageStore();
+export const store = new Store();

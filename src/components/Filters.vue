@@ -51,19 +51,19 @@ export default {
   },
   methods: {
     toggleFilter(filter) {
-      return this.store.toggleFilter(filter);
+      return this.store.countriesList.toggleFilter(filter);
     },
     isSelectedFilter(filter) {
-      return this.store.isSelectedFilter(filter);
+      return this.store.countriesList.isSelectedFilter(filter);
     },
     resetAllFilters() {
-      return this.store.resetAllFilters();
+      return this.store.countriesList.resetAllFilters();
     }
   },
   mounted() {
     autorun(() => {
-      this.filters = this.store.countriesStore.filters;
-      this.filtersState = toJS(this.store.filtersState);
+      this.filters = this.store.countriesList.countriesStore.filters;
+      this.filtersState = toJS(this.store.countriesList.filtersState);
     });
   }
 };

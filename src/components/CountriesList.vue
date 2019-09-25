@@ -9,30 +9,36 @@
         <CountryLi>
           <Flag
             v-if="country.code"
-            :img="`https://www.countryflags.io/${country.code.toLowerCase()}/flat/64.png`"
+            :img="
+              `https://www.countryflags.io/${country.code.toLowerCase()}/flat/64.png`
+            "
           />
-          <ContryName>{{country.name}}</ContryName>
+          <ContryName>{{ country.name }}</ContryName>
           <Details>
             <Detail>
               <strong>population:</strong>
-              {{country.population}}
+              {{ country.population }}
             </Detail>
             <Detail>
               <strong>region:</strong>
-              {{country.region}}
+              {{ country.region }}
             </Detail>
             <Detail>
               <strong>capital:</strong>
-              {{country.capital}}
+              {{ country.capital }}
             </Detail>
 
             <Detail>
               <strong>currencies:</strong>
-              <Label v-for="curr in country.currencies" :key="curr">{{curr}}</Label>
+              <Label v-for="curr in country.currencies" :key="curr">{{
+                curr
+              }}</Label>
             </Detail>
             <Detail>
               <strong>languages:</strong>
-              <Label v-for="lang in country.languages" :key="lang">{{lang}}</Label>
+              <Label v-for="lang in country.languages" :key="lang">{{
+                lang
+              }}</Label>
             </Detail>
           </Details>
         </CountryLi>
@@ -77,7 +83,7 @@ export default {
   },
   mounted() {
     autorun(() => {
-      this.countries = this.store.countriesList;
+      this.countries = this.store.countriesList.countriesList;
     });
   }
 };
