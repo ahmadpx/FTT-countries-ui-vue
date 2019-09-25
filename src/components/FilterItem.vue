@@ -1,18 +1,31 @@
 <template>
-  <div>
-    <input
+  <FilterWraper>
+    <Checkbox
       type="checkbox"
       :id="filter.value"
       :checked="isSelectedFilter"
-      @change="toggleFilter(filter)"
+      :onChange="()=>toggleFilter(filter)"
     />
-    <label :for="filter.value">{{ filter.value }} ({{ filter.count }})</label>
-  </div>
+    <Label :for="filter.value">
+      <Value>{{ filter.value }}</Value>
+
+      <Count>({{ filter.count }})</Count>
+    </Label>
+  </FilterWraper>
 </template>
 
 <script>
+import { FilterWraper, Label, Value, Count } from "./FilterItem.styles";
+import Checkbox from "./Checkbox";
 export default {
   name: "FilterItem",
+  components: {
+    FilterWraper,
+    Label,
+    Value,
+    Count,
+    Checkbox
+  },
   props: {
     filter: Object,
     isSelectedFilter: Boolean,

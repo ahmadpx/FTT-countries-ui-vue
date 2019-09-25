@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <Filters :store="store" />
-    <CountriesList :store="store" />
+    <Layout>
+      <Filters :store="store" />
+      <CountriesList :store="store" />
+    </Layout>
   </div>
 </template>
 
@@ -9,12 +11,14 @@
 import CountriesList from "./components/CountriesList";
 import Filters from "./components/Filters";
 import { store } from "./store";
+import { Layout } from "./app.styles";
 
 export default {
   name: "app",
   components: {
     CountriesList,
-    Filters
+    Filters,
+    Layout
   },
   data() {
     return {
@@ -28,6 +32,11 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Ubuntu&display=swap");
+body {
+  font-family: "Ubuntu", sans-serif;
+  background: rgba(0, 0, 0, 0.02);
+}
 #app {
   display: flex;
 }

@@ -1,8 +1,6 @@
 <template>
-  <div>
+  <FiltersContainer>
     <h2>Filters</h2>
-
-    <button @click="resetAllFilters()">reset all filters</button>
 
     <FilterGroup
       title="languages"
@@ -27,17 +25,20 @@
       :toggle-filter="toggleFilter"
       :filters-state="filtersState"
     />
-  </div>
+    <ResetBtn @click="resetAllFilters()">reset all filters</ResetBtn>
+  </FiltersContainer>
 </template>
 
 <script>
 import { autorun, toJS } from "mobx";
 import FilterGroup from "./FilterGroup";
-
+import { FiltersContainer, ResetBtn } from "./Filters.styles";
 export default {
   name: "Filters",
   components: {
-    FilterGroup
+    FilterGroup,
+    ResetBtn,
+    FiltersContainer
   },
   props: {
     store: Object
