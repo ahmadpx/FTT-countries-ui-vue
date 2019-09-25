@@ -1,6 +1,6 @@
 <template>
-  <div :key="JSON.stringify(filtersState)">
-    <h3>{{ title }}</h3>
+  <FilterWraper :key="JSON.stringify(filtersState)">
+    <FilterTitle>{{ title }}</FilterTitle>
 
     <div v-for="filter in filterData.slice(0, 10)" :key="filter.value">
       <filter-item
@@ -9,16 +9,19 @@
         :is-selected-filter="isSelectedFilter(filter)"
       />
     </div>
-  </div>
+  </FilterWraper>
 </template>
 
 <script>
 import FilterItem from "./FilterItem";
+import { FilterWraper, FilterTitle } from "./FilterGroup.styles";
 
 export default {
   name: "FiltersGroup",
   components: {
-    FilterItem
+    FilterItem,
+    FilterWraper,
+    FilterTitle
   },
   props: {
     filterData: {
