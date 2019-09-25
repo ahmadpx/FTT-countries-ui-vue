@@ -1,5 +1,7 @@
 # ftt-countries-ui-vue
 
+Preview url: https://ftt-countries-ui-vue.ahmadpx.now.sh
+
 ## Project setup
 ```
 npm install
