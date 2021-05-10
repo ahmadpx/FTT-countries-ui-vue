@@ -12,7 +12,7 @@
     "ftt-countries-sdk": "1.9.0",
     "vue": "2.6.10",
     "axios": "0.19.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "mobx": "4.9.4",
     "mobx-utils": "5.4.0",
     "vue-styled-components": "1.4.9"
